@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shao Wei & Grace — RSVP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body class="rsvp-page">
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero reveal">
+    <!--
+      Change 1: mobile gets hero-mobile-1.jpg, desktop keeps hero-1.jpg.
+      <picture> lets the browser pick the right source per breakpoint;
+      the <img> fallback is the desktop version.
+    -->
+    <picture class="hero__bg-picture">
+      <source media="(max-width: 559px)" srcset="assets/hero-mobile-1.jpg">
+      <img
+        src="assets/hero-1.jpg"
+        alt=""
+        role="presentation"
+        class="hero__bg"
+        onerror="this.style.display='none'"
+      >
+    </picture>
+    <div class="hero__overlay"></div>
+    <div class="hero__text">
+      <p class="hero__eyebrow">We're getting married!</p>
+      <h1 class="hero__names">Shao Wei &amp; Grace</h1>
+      <p class="hero__date">24 . 10 . 26</p>
+    </div>
+  </section>
+
+  <!-- ══ PORTRAIT + INVITE ══════════════════════════════════ -->
+  <div class="invite-outer">
+    <section class="invite reveal">
+      <div class="invite__portrait">
+        <!--
+          Change 3: desktop uses body-pic-3-desktop.jpg.
+          Change 2: mobile keeps body-pic-3.jpg but object-position is
+                    adjusted in CSS to shift framing up.
+          <picture> swaps the source; CSS handles mobile crop position.
+        -->
+        <picture>
+          <source media="(min-width: 560px)" srcset="assets/body-pic-3-desktop.jpg">
+          <img
+            src="assets/body-pic-3.jpg"
+            alt="Shao Wei and Grace"
+            class="invite__portrait-img"
+            onerror="this.style.opacity='0'"
+          >
+        </picture>
+      </div>
+      <div class="invite__copy">
+        <h2 class="invite__headline">We'd love to<br>celebrate together</h2>
+        <p class="invite__subtext">
+          Together with our families, we joyfully invite you to join us as we
+          exchange our vows and begin this new chapter — surrounded by the people
+          who mean the most to us.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══ SCHEDULE ═══════════════════════════════════════════ -->
+  <section class="schedule reveal">
+    <div class="schedule__overlay"></div>
+    <div class="schedule__inner">
+      <h2 class="schedule__title">Schedule</h2>
+      <ol class="timeline" role="list">
+        <li class="timeline__item">
+          <span class="timeline__time">6.30 pm</span>
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <span class="timeline__event">Doors open &amp; arrival</span>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__time">7.00 pm</span>
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <span class="timeline__event">Holy Matrimony</span>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__time">7.30 pm</span>
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <span class="timeline__event">Dinner Banquet</span>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__time">10.30 pm</span>
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <span class="timeline__event">End of evening</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ══ RSVP FORM ══════════════════════════════════════════ -->
+  <section class="form-section reveal">
+    <div class="form-section__header">
+      <h2 class="form-section__title">Kindly RSVP</h2>
+    </div>
+    <div class="form-card">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScbn2B3UfhRGvUdL8sd8YU0qMnWtVeVvzJMNAxGI_AAtPn_wA/viewform?usp=header"
+        title="RSVP Form"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        loading="lazy"
+      >Loading…</iframe>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer class="site-footer reveal">
+    <p class="footer-deco">Shao Wei &amp; Grace</p>
+  </footer>
+
+  <script>
+    // Scroll-triggered reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          observer.unobserve(e.target);
+        }
+      }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

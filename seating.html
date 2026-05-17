@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Your Table</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <main class="card">
+
+      <div class="header">
+        <h1>Hi there!</h1>
+        <p class="subtitle">Enter your full name to find your seat.</p>
+      </div>
+
+      <div class="search-area">
+        <label for="nameInput" class="sr-only">Your full name</label>
+        <input
+          id="nameInput"
+          type="text"
+          placeholder="Your name"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+        >
+        <button onclick="findGuest()" id="searchBtn">Find My Seat</button>
+      </div>
+
+      <div id="result" role="status" aria-live="polite"></div>
+
+    </main>
+
+    <p class="footer-deco">Shao Wei &amp; Grace</p>
+
+    <!-- Footer illustration block -->
+    <div class="footer-illustration">
+      <img
+        src="assets/footer-illustration-bride-groom.png"
+        alt=""
+        role="presentation"
+        onerror="this.parentElement.style.display='none'"
+      >
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
