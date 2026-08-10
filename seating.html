@@ -33,6 +33,22 @@
 
       <div id="result" role="status" aria-live="polite"></div>
 
+      <!--
+        Floorplan block — hidden until a search returns a result.
+        See "highlightTable()" in script.js: it positions #spotlight
+        over the matched table using percentages from tablePositions,
+        so it scales correctly at any screen size.
+      -->
+      <div class="floorplan-wrap" id="floorplanWrap" hidden>
+        <div class="floorplan-frame" id="floorplanFrame">
+          <img id="floorplanImg" alt="Wedding reception floorplan">
+          <div class="spotlight" id="spotlight" hidden>
+            <div class="spotlight-tag" id="spotlightTag"></div>
+          </div>
+        </div>
+        <p class="floorplan-caption" id="floorplanCaption"></p>
+      </div>
+
     </main>
 
     <p class="footer-deco">Shao Wei &amp; Grace</p>

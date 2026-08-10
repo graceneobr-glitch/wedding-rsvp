@@ -232,6 +232,19 @@ button:active {
   color: var(--text-soft);
 }
 
+/* ── Special dietary line (shown only when a guest has one) ──
+   Added for the Google Sheet "Dietary Restrictions" column. */
+.diet-line {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-family: var(--font-sans);
+  color: var(--sage-dark);
+  background: var(--sage-light);
+  border-radius: 999px;
+}
+
 /* ── Not found card ─────────────────────────────────── */
 .not-found-card {
   background: var(--cream);
@@ -256,6 +269,16 @@ button:active {
   line-height: 1.6;
 }
 
+/* ── Loading state (shown briefly while the API call is in flight) ── */
+.loading-text {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--text-soft);
+  padding: 8px 0;
+}
+
 /* ── Multiple matches label ─────────────────────────── */
 .matches-header {
   text-align: center;
@@ -263,6 +286,76 @@ button:active {
   color: var(--text-soft);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+/* ── Floorplan (seating page) ────────────────────────────────
+   Added for table highlighting. Hidden until a search finds
+   exactly one guest; see highlightTable() in script.js. */
+.floorplan-wrap {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.floorplan-caption {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-soft);
+  margin: 10px 4px 0;
+}
+
+.floorplan-frame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden; /* clips the spotlight's giant box-shadow to the frame */
+  border: 1px solid var(--beige-dark);
+  background: var(--beige);
+  box-shadow: 0 2px 10px var(--shadow);
+  line-height: 0;
+}
+
+.floorplan-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+  Spotlight technique: this element is positioned (via % left/top/
+  width/height, set from tablePositions in script.js) exactly over the
+  target table. It has no background of its own — its box-shadow is a
+  huge (9999px) spread of a dark colour, which paints the ENTIRE frame
+  dark except for the element's own rectangle, leaving that one spot
+  at full brightness. A sage ring + soft glow are layered into the
+  same box-shadow so the highlight is unmistakable on a phone screen.
+*/
+.spotlight {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 9999px rgba(74, 55, 40, 0.60),
+    0 0 0 3px var(--sage-dark),
+    0 0 20px 6px rgba(94, 127, 93, 0.55);
+  pointer-events: none;
+}
+.spotlight[hidden] { display: none; }
+
+.spotlight-tag {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--brown);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 /* ── Footer name ────────────────────────────────────── */
@@ -313,6 +406,7 @@ button:active {
 
 /* ============================================================
    RSVP PAGE — index.html additions
+   (unchanged — nothing below this line was modified)
    ============================================================ */
 
 /* ── Body override for RSVP (full-width, no flex centering) ── */
