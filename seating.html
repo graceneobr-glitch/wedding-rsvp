@@ -15,11 +15,11 @@
 
       <div class="header">
         <h1>Hi there!</h1>
-        <p class="subtitle">Enter your full name to find your seat.</p>
+        <p class="subtitle">Enter your first name to find your seat.</p>
       </div>
 
       <div class="search-area">
-        <label for="nameInput" class="sr-only">Your full name</label>
+        <label for="nameInput" class="sr-only">Your name</label>
         <input
           id="nameInput"
           type="text"
@@ -41,10 +41,12 @@
       -->
       <div class="floorplan-wrap" id="floorplanWrap" hidden>
         <div class="floorplan-frame" id="floorplanFrame">
-          <img id="floorplanImg" alt="Wedding reception floorplan">
-          <div class="spotlight" id="spotlight" hidden>
-            <div class="spotlight-tag" id="spotlightTag"></div>
-          </div>
+          <img
+            id="floorplanImg"
+            alt="Wedding reception floorplan"
+            onerror="this.closest('.floorplan-wrap').hidden = true; console.warn('Floorplan image failed to load — check that FLOORPLAN_IMAGE in script.js matches the real file path under /assets/.');"
+          >
+          <div class="spotlight" id="spotlight" hidden></div>
         </div>
         <p class="floorplan-caption" id="floorplanCaption"></p>
       </div>

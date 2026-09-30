@@ -11,7 +11,7 @@
 // matching the requested name — it never sends your full guest
 // list to the browser (see Code.gs for why that matters for
 // privacy on a public page).
-const API_URL = "https://script.google.com/macros/s/AKfycbxLpHNU4FOnezg_n1k60wCDc5VvM4L0EUSEwSykjn9AHP1mIy3_2jHOyRcO13z2n7rV/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxGcSqWaRCECq9HZ4cZRoZtZK_OGJ2qEYPMRiorQcItfqjQkCFCsCY0duveYKeBPtus/exec";
 
 // Path to your floorplan image inside /assets/.
 const FLOORPLAN_IMAGE = "assets/wedding-floorplan.png";
@@ -21,32 +21,32 @@ const FLOORPLAN_IMAGE = "assets/wedding-floorplan.png";
 // (1366 x 768px). Re-calibrate with seating.html?calibrate=1 if you
 // ever swap in a different floorplan image.
 const tablePositions = {
-  "1":  { x: 1.56,  y: 18.36, width: 9.37, height: 16.67 },
-  "2":  { x: 1.57,  y: 39.26, width: 9.37, height: 16.67 },
-  "3":  { x: 1.56,  y: 60.17, width: 9.37, height: 16.67 },
-  "4":  { x: 12.66, y: 81.08, width: 9.37, height: 16.67 },
-  "5":  { x: 12.66, y: 60.17, width: 9.37, height: 16.67 },
-  "6":  { x: 12.66, y: 39.26, width: 9.37, height: 16.67 },
-  "7":  { x: 12.65, y: 18.36, width: 9.37, height: 16.67 },
-  "8":  { x: 23.90, y: 18.39, width: 9.37, height: 16.67 },
-  "9":  { x: 23.90, y: 39.27, width: 9.37, height: 16.67 },
-  "10": { x: 23.89, y: 60.21, width: 9.37, height: 16.67 },
-  "11": { x: 23.91, y: 81.12, width: 9.37, height: 16.67 },
-  "12": { x: 34.99, y: 60.18, width: 9.37, height: 16.67 },
-  "13": { x: 34.99, y: 39.26, width: 9.37, height: 16.67 },
-  "14": { x: 55.43, y: 39.27, width: 9.37, height: 16.67 },
-  "15": { x: 55.43, y: 60.18, width: 9.37, height: 16.67 },
-  "16": { x: 66.52, y: 60.21, width: 9.37, height: 16.67 },
-  "17": { x: 66.54, y: 39.28, width: 9.37, height: 16.67 },
-  "18": { x: 66.50, y: 18.42, width: 9.37, height: 16.67 },
-  "19": { x: 77.75, y: 18.40, width: 9.37, height: 16.67 },
-  "20": { x: 77.75, y: 39.30, width: 9.37, height: 16.67 },
-  "21": { x: 77.79, y: 60.18, width: 9.37, height: 16.67 },
-  "22": { x: 88.88, y: 60.18, width: 9.37, height: 16.67 },
-  "23": { x: 88.87, y: 39.26, width: 9.37, height: 16.67 },
-  "24": { x: 88.86, y: 18.36, width: 9.37, height: 16.67 },
-  "VIP1": { x: 35.01, y: 18.36, width: 9.37, height: 16.67 },
-  "VIP2": { x: 55.45, y: 18.35, width: 9.37, height: 16.67 }
+  "1":  { x: 1.32,  y: 34.04, width: 8.57, height: 15.10 },
+  "2":  { x: 1.32,  y: 64.64, width: 8.57, height: 15.10 },
+  "3":  { x: 13.14, y: 82.70, width: 8.20, height: 14.58 },
+  "4":  { x: 13.13, y: 61.32, width: 8.20, height: 14.58 },
+  "5":  { x: 12.85, y: 39.99, width: 8.20, height: 14.58 },
+  "6":  { x: 13.15, y: 18.67, width: 8.20, height: 14.58 },
+  "7":  { x: 24.34, y: 18.68, width: 8.20, height: 14.58 },
+  "8":  { x: 24.33, y: 39.99, width: 8.20, height: 14.58 },
+  "9":  { x: 24.33, y: 60.98, width: 8.20, height: 14.58 },
+  "10": { x: 24.31, y: 81.93, width: 8.20, height: 14.58 },
+  "11": { x: 35.69, y: 73.31, width: 8.20, height: 14.58 },
+  "12": { x: 35.69, y: 50.81, width: 8.20, height: 14.58 },
+  "13": { x: 55.96, y: 50.82, width: 8.20, height: 14.58 },
+  "14": { x: 55.96, y: 73.32, width: 8.20, height: 14.58 },
+  "15": { x: 67.59, y: 81.93, width: 8.20, height: 14.58 },
+  "16": { x: 67.59, y: 60.56, width: 8.20, height: 14.58 },
+  "17": { x: 67.32, y: 39.23, width: 8.20, height: 14.58 },
+  "18": { x: 67.58, y: 17.97, width: 8.20, height: 14.45 },
+  "19": { x: 78.76, y: 17.98, width: 8.20, height: 14.45 },
+  "20": { x: 78.75, y: 39.21, width: 8.20, height: 14.58 },
+  "21": { x: 78.76, y: 60.20, width: 8.20, height: 14.58 },
+  "22": { x: 78.76, y: 81.16, width: 8.20, height: 14.58 },
+  "23": { x: 89.97, y: 64.64, width: 8.49, height: 15.10 },
+  "24": { x: 89.99, y: 34.04, width: 8.49, height: 15.10 },
+  "VIP1": { x: 35.53, y: 28.33, width: 8.57, height: 15.10 },
+  "VIP2": { x: 55.78, y: 28.36, width: 8.57, height: 15.10 }
 };
 
 /* ============================================================
@@ -76,13 +76,21 @@ function normaliseName(raw) {
   return raw.trim().replace(/\s+/g, " ").toLowerCase();
 }
 
-// ── Enter key support ────────────────────────────────────────
+// ── Enter key support + early floorplan image check ─────────
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("nameInput");
   if (input) {
     input.addEventListener("keydown", e => {
       if (e.key === "Enter") findGuest();
     });
+  }
+
+  // Set the floorplan image source up front (rather than waiting for
+  // the first search) so a bad path fails fast and is easy to spot
+  // in the console, instead of only surfacing after someone searches.
+  const img = document.getElementById("floorplanImg");
+  if (img) {
+    img.src = FLOORPLAN_IMAGE;
   }
 });
 
@@ -174,9 +182,29 @@ async function findGuest() {
 }
 
 // ── Result card ──────────────────────────────────────────────
+// VIP tables ("VIP1", "VIP2", or "VIP 1" etc.) get a badge that reads
+// "VIP" over "1"/"2" in matching font sizes, rather than the small
+// "TABLE" caption + big number used for ordinary numbered tables.
+function badgeMarkup(tableValue) {
+  const str = String(tableValue).trim();
+  const vipMatch = str.match(/^vip\s*(\d+)$/i);
+
+  if (vipMatch) {
+    return `
+      <span class="badge-vip-line">VIP</span>
+      <span class="badge-vip-line">${escapeHtml(vipMatch[1])}</span>
+    `;
+  }
+
+  return `
+    <span class="badge-label">Table</span>
+    <span class="badge-number">${escapeHtml(str || "—")}</span>
+  `;
+}
+
 function resultCard(guest, delay) {
-  const name  = escapeHtml(guest.name  || "Guest");
-  const table = escapeHtml(guest.table || "—");
+  const name  = escapeHtml(guest.name || "Guest");
+  const table = guest.table || "—";
 
   const dietHtml = hasDiet(guest.diet)
     ? `<div class="diet-line">Special diet: ${escapeHtml(guest.diet)}</div>`
@@ -185,12 +213,11 @@ function resultCard(guest, delay) {
   return `
     <div class="result-card" style="animation-delay:${delay * 80}ms">
       <div class="table-badge">
-        <span class="badge-label">Table</span>
-        <span class="badge-number">${table}</span>
+        ${badgeMarkup(table)}
       </div>
       <div class="result-info">
         <div class="result-name">${name}</div>
-        <div class="result-desc">We're glad you're here.</div>
+        <div class="result-desc">We're glad you're here!</div>
         ${dietHtml}
       </div>
     </div>
@@ -238,38 +265,37 @@ function highlightTable(tableNumber) {
   const img = document.getElementById("floorplanImg");
   const frame = document.getElementById("floorplanFrame");
   const spotlight = document.getElementById("spotlight");
-  const tag = document.getElementById("spotlightTag");
   const caption = document.getElementById("floorplanCaption");
   if (!wrap || !spotlight) return;
 
-  if (!img.getAttribute("src")) {
-    img.src = FLOORPLAN_IMAGE;
-  }
-
-  const key = String(tableNumber);
+  // Normalise before lookup so sheet values like "VIP 1" (with a space)
+  // still match the "VIP1" key in tablePositions below. Numbered tables
+  // ("12", "15", etc.) are unaffected by this — spaces around a plain
+  // number are just trimmed away.
+  const rawKey = String(tableNumber);
+  const key = rawKey.trim().toUpperCase().replace(/\s+/g, "");
   const pos = tablePositions[key];
 
   if (!pos) {
     // No coordinates configured for this table — hide the floorplan
     // rather than show a broken/mispositioned highlight.
     wrap.hidden = true;
-    console.warn(`No tablePositions entry for table "${key}". Add one in script.js.`);
+    console.warn(`No tablePositions entry for table "${rawKey}" (normalised: "${key}"). Add one in script.js.`);
     return;
   }
 
   wrap.hidden = false;
-  if (caption) caption.textContent = `Table ${key} is highlighted below.`;
+  if (caption) caption.textContent = "";
 
   spotlight.style.left   = pos.x + "%";
   spotlight.style.top    = pos.y + "%";
   spotlight.style.width  = pos.width + "%";
   spotlight.style.height = pos.height + "%";
   spotlight.hidden = false;
-  if (tag) tag.textContent = key;
 
   // Calibration helper below only attaches its click listener once.
   if (frame && !frame.dataset.calibrateBound && isCalibrateMode()) {
-    bindCalibration(frame, spotlight, tag);
+    bindCalibration(frame, spotlight);
     frame.dataset.calibrateBound = "1";
   }
 }
@@ -285,17 +311,17 @@ function isCalibrateMode() {
   return new URLSearchParams(window.location.search).get("calibrate") === "1";
 }
 
-function bindCalibration(frame, spotlight, tag) {
+function bindCalibration(frame, spotlight) {
   frame.style.cursor = "crosshair";
   frame.addEventListener("click", (e) => {
     const rect = frame.getBoundingClientRect();
     const xPct = ((e.clientX - rect.left) / rect.width) * 100;
     const yPct = ((e.clientY - rect.top) / rect.height) * 100;
     const box = {
-      x: Math.round((xPct - 4.7) * 100) / 100,
-      y: Math.round((yPct - 8.3) * 100) / 100,
-      width: 9.37,
-      height: 16.67
+      x: Math.round((xPct - 4.1) * 100) / 100,
+      y: Math.round((yPct - 7.3) * 100) / 100,
+      width: 8.2,
+      height: 14.6
     };
     console.log("Table position:", JSON.stringify(box));
     spotlight.style.left = box.x + "%";
@@ -303,6 +329,5 @@ function bindCalibration(frame, spotlight, tag) {
     spotlight.style.width = box.width + "%";
     spotlight.style.height = box.height + "%";
     spotlight.hidden = false;
-    if (tag) tag.textContent = "?";
   });
 }
