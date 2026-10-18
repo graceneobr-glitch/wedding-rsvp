@@ -745,6 +745,16 @@ body.rsvp-page {
   line-height: 1.3;
 }
 
+.schedule__attire {
+  margin-top: 28px;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* ── FORM SECTION ─────────────────────────────────────── */
 .form-section {
   background: var(--beige);
