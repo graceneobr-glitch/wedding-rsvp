@@ -197,6 +197,7 @@ button:active {
   justify-content: center;
 }
 
+/* "TABLE" label — sits slightly closer to the number beneath it */
 .badge-label {
   font-size: 9px;
   font-weight: 600;
@@ -204,6 +205,7 @@ button:active {
   text-transform: uppercase;
   color: var(--text-soft);
   line-height: 1;
+  margin-bottom: -2px; /* pulls the number up toward the label */
 }
 
 .badge-number {
@@ -211,7 +213,7 @@ button:active {
   font-size: 28px;
   font-weight: 600;
   color: var(--brown);
-  line-height: 1.15;
+  line-height: 1.1; /* slightly tighter than before (was 1.15) */
 }
 
 /* VIP badges show "VIP" over the seat number, both at the same size
@@ -370,39 +372,10 @@ button:active {
   text-align: center;
 }
 
-/* ── Footer illustration block (seating page) ────────── */
-.footer-illustration {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  padding: 36px 0 56px;
-  animation: fadeInUp 1s ease 0.4s both;
-}
-
-.footer-illustration__label {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 16px;
-  color: var(--text-soft);
-  letter-spacing: 0.03em;
-  margin-bottom: 20px;
-}
-
-.footer-illustration img {
-  display: block;
-  width: 100%;
-  max-width: 260px;
-  height: auto;
-  object-fit: contain;
-  opacity: 0.82;
-}
-
 /* Seating page footer spacing */
 .page-wrap .footer-deco {
   margin-top: 24px;
+  margin-bottom: 48px;
 }
 
 
@@ -555,15 +528,9 @@ body.rsvp-page {
   height: 100%;
   object-fit: cover;
   display: block;
-  object-position: center center; /* desktop default */
+  object-position: center center;
 }
 
-/*
- * Fix 1 — Mobile crop: shift object-position down so the middle-to-lower
- * portion of body-pic-3.jpg is visible instead of the top.
- * "center 65%" anchors the focal point 65% down the image height,
- * pulling subjects into the visible frame on the 4:3 mobile crop.
- */
 @media (max-width: 559px) {
   .invite__portrait-img {
     object-position: center 65%;
@@ -592,11 +559,6 @@ body.rsvp-page {
   line-height: 1.8;
   margin-bottom: 0;
   font-style: italic;
-  /*
-   * Fix 2 — Desktop copy width: cap the paragraph so it doesn't
-   * stretch across the full remaining column width at large viewports.
-   * This also naturally tightens the void to the right of the text.
-   */
   max-width: 480px;
 }
 
@@ -604,11 +566,6 @@ body.rsvp-page {
 @media (min-width: 560px) {
   .invite {
     flex-direction: row;
-    /*
-     * Fix 2 — Desktop vertical alignment: change from flex-start to center
-     * so the copy column sits optically paired with the image rather than
-     * anchoring to the top and leaving a dead zone below the paragraph.
-     */
     align-items: center;
     padding: 72px 64px;
     gap: 48px;
@@ -619,7 +576,6 @@ body.rsvp-page {
     aspect-ratio: 3 / 4;
     box-shadow: none;
     border-radius: 4px;
-    /* flex-shrink: 0 already set above — portrait never squashes */
   }
 
   .invite__copy {

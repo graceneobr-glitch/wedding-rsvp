@@ -14,39 +14,37 @@
 const API_URL = "https://script.google.com/macros/s/AKfycbxGcSqWaRCECq9HZ4cZRoZtZK_OGJ2qEYPMRiorQcItfqjQkCFCsCY0duveYKeBPtus/exec";
 
 // Path to your floorplan image inside /assets/.
-const FLOORPLAN_IMAGE = "assets/wedding-floorplan.png";
+const FLOORPLAN_IMAGE = "assets/wedding-floorplan.jpg";
 
 // Table coordinates as PERCENTAGES of the floorplan image's own
-// width/height — measured directly from the floorplan you sent
-// (1366 x 768px). Re-calibrate with seating.html?calibrate=1 if you
-// ever swap in a different floorplan image.
+// width/height — remapped from the updated floorplan (1366x768px).
+// Re-calibrate with seating.html?calibrate=1 if you ever swap in
+// a different floorplan image.
 const tablePositions = {
-  "1":  { x: 1.32,  y: 34.04, width: 8.57, height: 15.10 },
-  "2":  { x: 1.32,  y: 64.64, width: 8.57, height: 15.10 },
-  "3":  { x: 13.14, y: 82.70, width: 8.20, height: 14.58 },
-  "4":  { x: 13.13, y: 61.32, width: 8.20, height: 14.58 },
-  "5":  { x: 12.85, y: 39.99, width: 8.20, height: 14.58 },
-  "6":  { x: 13.15, y: 18.67, width: 8.20, height: 14.58 },
-  "7":  { x: 24.34, y: 18.68, width: 8.20, height: 14.58 },
-  "8":  { x: 24.33, y: 39.99, width: 8.20, height: 14.58 },
-  "9":  { x: 24.33, y: 60.98, width: 8.20, height: 14.58 },
-  "10": { x: 24.31, y: 81.93, width: 8.20, height: 14.58 },
-  "11": { x: 35.69, y: 73.31, width: 8.20, height: 14.58 },
-  "12": { x: 35.69, y: 50.81, width: 8.20, height: 14.58 },
-  "13": { x: 55.96, y: 50.82, width: 8.20, height: 14.58 },
-  "14": { x: 55.96, y: 73.32, width: 8.20, height: 14.58 },
-  "15": { x: 67.59, y: 81.93, width: 8.20, height: 14.58 },
-  "16": { x: 67.59, y: 60.56, width: 8.20, height: 14.58 },
-  "17": { x: 67.32, y: 39.23, width: 8.20, height: 14.58 },
-  "18": { x: 67.58, y: 17.97, width: 8.20, height: 14.45 },
-  "19": { x: 78.76, y: 17.98, width: 8.20, height: 14.45 },
-  "20": { x: 78.75, y: 39.21, width: 8.20, height: 14.58 },
-  "21": { x: 78.76, y: 60.20, width: 8.20, height: 14.58 },
-  "22": { x: 78.76, y: 81.16, width: 8.20, height: 14.58 },
-  "23": { x: 89.97, y: 64.64, width: 8.49, height: 15.10 },
-  "24": { x: 89.99, y: 34.04, width: 8.49, height: 15.10 },
-  "VIP1": { x: 35.53, y: 28.33, width: 8.57, height: 15.10 },
-  "VIP2": { x: 55.78, y: 28.36, width: 8.57, height: 15.10 }
+  "1":    { x: 0.73,  y: 51.69, width: 9.52,  height: 16.93 },
+  "2":    { x: 12.45, y: 79.04, width: 9.52,  height: 16.93 },
+  "3":    { x: 12.45, y: 59.51, width: 9.52,  height: 16.93 },
+  "4":    { x: 12.45, y: 38.67, width: 9.52,  height: 16.93 },
+  "5":    { x: 12.45, y: 16.54, width: 9.52,  height: 16.93 },
+  "6":    { x: 23.65, y: 16.54, width: 9.52,  height: 16.93 },
+  "7":    { x: 23.65, y: 38.67, width: 9.52,  height: 16.93 },
+  "8":    { x: 23.65, y: 59.51, width: 9.52,  height: 16.93 },
+  "9":    { x: 23.65, y: 79.04, width: 9.52,  height: 16.93 },
+  "10":   { x: 34.77, y: 71.22, width: 9.52,  height: 16.93 },
+  "11":   { x: 34.77, y: 49.09, width: 9.52,  height: 16.93 },
+  "VIP1": { x: 33.82, y: 25.26, width: 11.42, height: 20.31 },
+  "VIP2": { x: 54.47, y: 25.26, width: 11.42, height: 20.31 },
+  "12":   { x: 55.42, y: 49.09, width: 9.52,  height: 16.93 },
+  "13":   { x: 55.42, y: 71.22, width: 9.52,  height: 16.93 },
+  "14":   { x: 65.67, y: 80.34, width: 9.52,  height: 16.93 },
+  "15":   { x: 65.67, y: 59.51, width: 9.52,  height: 16.93 },
+  "16":   { x: 65.67, y: 38.67, width: 9.52,  height: 16.93 },
+  "17":   { x: 65.67, y: 16.54, width: 9.52,  height: 16.93 },
+  "18":   { x: 77.09, y: 16.54, width: 9.52,  height: 16.93 },
+  "19":   { x: 77.09, y: 38.67, width: 9.52,  height: 16.93 },
+  "20":   { x: 77.09, y: 59.51, width: 9.52,  height: 16.93 },
+  "21":   { x: 77.09, y: 80.34, width: 9.52,  height: 16.93 },
+  "22":   { x: 89.68, y: 51.69, width: 9.52,  height: 16.93 },
 };
 
 /* ============================================================
@@ -149,7 +147,7 @@ async function findGuest() {
   try {
     matches = await fetchMatches(query);
   } catch (err) {
-    console.error("Seating lookup failed:", err); // technical detail stays in the console
+    console.error("Seating lookup failed:", err);
     resultDiv.innerHTML = notFoundCard(
       "We're having trouble looking that up",
       "Please seek assistance at the reception."
@@ -166,11 +164,6 @@ async function findGuest() {
   }
 
   if (matches.length > 1) {
-    // Duplicate guest names in the sheet. Rather than silently picking
-    // one, show every match so the guest (or reception staff) can pick
-    // the right one. If this keeps happening, the cleanest long-term
-    // fix is adding a unique "Guest ID" column to the sheet and having
-    // the Apps Script match on that instead of on name alone.
     let html = `<p class="matches-header">${matches.length} matches found</p>`;
     html += matches.map((g, i) => resultCard(g, i)).join("");
     resultDiv.innerHTML = html;
@@ -182,9 +175,6 @@ async function findGuest() {
 }
 
 // ── Result card ──────────────────────────────────────────────
-// VIP tables ("VIP1", "VIP2", or "VIP 1" etc.) get a badge that reads
-// "VIP" over "1"/"2" in matching font sizes, rather than the small
-// "TABLE" caption + big number used for ordinary numbered tables.
 function badgeMarkup(tableValue) {
   const str = String(tableValue).trim();
   const vipMatch = str.match(/^vip\s*(\d+)$/i);
@@ -262,23 +252,17 @@ function hideFloorplan() {
 
 function highlightTable(tableNumber) {
   const wrap = document.getElementById("floorplanWrap");
-  const img = document.getElementById("floorplanImg");
   const frame = document.getElementById("floorplanFrame");
   const spotlight = document.getElementById("spotlight");
   const caption = document.getElementById("floorplanCaption");
   if (!wrap || !spotlight) return;
 
-  // Normalise before lookup so sheet values like "VIP 1" (with a space)
-  // still match the "VIP1" key in tablePositions below. Numbered tables
-  // ("12", "15", etc.) are unaffected by this — spaces around a plain
-  // number are just trimmed away.
+  // Normalise: "VIP 1" → "VIP1", "12" stays "12"
   const rawKey = String(tableNumber);
   const key = rawKey.trim().toUpperCase().replace(/\s+/g, "");
   const pos = tablePositions[key];
 
   if (!pos) {
-    // No coordinates configured for this table — hide the floorplan
-    // rather than show a broken/mispositioned highlight.
     wrap.hidden = true;
     console.warn(`No tablePositions entry for table "${rawKey}" (normalised: "${key}"). Add one in script.js.`);
     return;
@@ -293,7 +277,6 @@ function highlightTable(tableNumber) {
   spotlight.style.height = pos.height + "%";
   spotlight.hidden = false;
 
-  // Calibration helper below only attaches its click listener once.
   if (frame && !frame.dataset.calibrateBound && isCalibrateMode()) {
     bindCalibration(frame, spotlight);
     frame.dataset.calibrateBound = "1";
@@ -302,10 +285,9 @@ function highlightTable(tableNumber) {
 
 /*
   Optional calibration helper — not shown to guests. Visit the page as
-  seating.html?calibrate=1, then search any name so the floorplan
-  renders, and click on a table to log its x/y/width/height
-  percentages to the console (F12 → Console). Copy them into
-  tablePositions above. Useful if you ever swap in a new floorplan.
+  seating.html?calibrate=1, search any name so the floorplan renders,
+  then click a table to log its x/y/width/height percentages to the
+  console (F12 → Console). Copy them into tablePositions above.
 */
 function isCalibrateMode() {
   return new URLSearchParams(window.location.search).get("calibrate") === "1";
@@ -317,16 +299,18 @@ function bindCalibration(frame, spotlight) {
     const rect = frame.getBoundingClientRect();
     const xPct = ((e.clientX - rect.left) / rect.width) * 100;
     const yPct = ((e.clientY - rect.top) / rect.height) * 100;
+    const r_w = 9.52;
+    const r_h = 16.93;
     const box = {
-      x: Math.round((xPct - 4.1) * 100) / 100,
-      y: Math.round((yPct - 7.3) * 100) / 100,
-      width: 8.2,
-      height: 14.6
+      x: Math.round((xPct - r_w / 2) * 100) / 100,
+      y: Math.round((yPct - r_h / 2) * 100) / 100,
+      width: r_w,
+      height: r_h
     };
     console.log("Table position:", JSON.stringify(box));
-    spotlight.style.left = box.x + "%";
-    spotlight.style.top = box.y + "%";
-    spotlight.style.width = box.width + "%";
+    spotlight.style.left   = box.x + "%";
+    spotlight.style.top    = box.y + "%";
+    spotlight.style.width  = box.width + "%";
     spotlight.style.height = box.height + "%";
     spotlight.hidden = false;
   });
