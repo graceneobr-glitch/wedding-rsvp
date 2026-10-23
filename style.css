@@ -352,13 +352,7 @@ button:active {
   same box-shadow so the highlight is unmistakable on a phone screen.
 */
 .spotlight {
-  position: absolute;
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 9999px rgba(0, 0, 0, 0.58),
-    0 0 0 4px #FFD400,
-    0 0 22px 6px rgba(255, 212, 0, 0.65);
-  pointer-events: none;
+  display: none; /* spotlight element kept in HTML but never shown */
 }
 .spotlight[hidden] { display: none; }
 
